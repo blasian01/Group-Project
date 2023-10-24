@@ -13,11 +13,15 @@ struct jobDescription {
 void evaluateJobInfo(struct jobDescription jobs[], int jobCount);
 
 int main() {
-    char fn[] = "input.txt";     // Define the filename
-    FILE *inputFile = fopen(fn, "r");  // Open the file for reading
+    FILE *fp;
+
+    fp = fopen("process_data.txt", "r");
+
+    //char fn[] = "input.txt";     // Define the filename
+    //FILE *inputFile = fopen(fn, "r");  // Open the file for reading
     
     // Check if the file can be opened
-    if (inputFile == NULL) {
+    if (fp == NULL) {
         printf("Error: Unable to open the file.\n");
         return 1;  // Return an error code
     }
@@ -25,18 +29,18 @@ int main() {
     int jobCount;
     
     // Read the number of jobs from the file
-    fscanf(inputFile, "%d", &jobCount);
+    fscanf(fp, "%d", &jobCount);
 
     // Create an array to store job descriptions
     struct jobDescription jobs[jobCount];
 
     // Read job descriptions from the file and store them in the array
     for (int i = 0; i < jobCount; i++) {
-        fscanf(inputFile, " %2s %d %d", jobs[i].jobID, &jobs[i].timeArrival, &jobs[i].timeExecution);
+        fscanf(fp, " %2s %d %d", jobs[i].jobID, &jobs[i].timeArrival, &jobs[i].timeExecution);
     }
 
     // Close the input file
-    fclose(inputFile);
+    fclose(fp);
 
     // Call a function to evaluate job information and calculate metrics
     evaluateJobInfo(jobs, jobCount);
