@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <output1.h>
 
 void SJFAlgorithim(int n, Process processes[]){
 
@@ -28,6 +29,7 @@ void SJFAlgorithim(int n, Process processes[]){
             // Execute the selected process for 1 time unit
             processes[shortestIndex].remainingTime--;
             currentTime++;
+            output(processes[shortestIndex].ID);
 
             // If the process is completed, increment counter
             if (processes[shortestIndex].remainingTime == 0) {
