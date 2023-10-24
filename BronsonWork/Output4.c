@@ -58,9 +58,8 @@ int isQueueFull(struct Queue* q, int max_size) {
 }
 
 int main() {
-    // Reading from text file
     FILE *fp;
-    fp = fopen("input1.txt", "r");
+    fp = fopen("input2.txt", "r");
     if (fp == NULL) {
         printf("Could not open file.\n");
         return 1;
@@ -69,12 +68,22 @@ int main() {
     int queue_max_size;
     fscanf(fp, "%d\n", &queue_max_size);
 
-    int n = 7; // Number of processes in your example
-    int pid[n], arrival_time[n], burst_time[n];
+    int n = 0; // Initialize n to zero
+    int capacity = 10; // Initial capacity
+    int *pid = malloc(capacity * sizeof(int));
+    int *arrival_time = malloc(capacity * sizeof(int));
+    int *burst_time = malloc(capacity * sizeof(int));
+
     struct Queue* q = createQueue();
 
-    for (int i = 0; i < n; i++) {
-        fscanf(fp, "P%d %d %d\n", &pid[i], &arrival_time[i], &burst_time[i]);
+    while (fscanf(fp, "P%d %d %d\n", &pid[n], &arrival_time[n], &burst_time[n]) != EOF) {
+        n++;
+        if (n == capacity) {
+            capacity *= 2; // Double the capacity
+            pid = realloc(pid, capacity * sizeof(int));
+            arrival_time = realloc(arrival_time, capacity * sizeof(int));
+            burst_time = realloc(burst_time, capacity * sizeof(int));
+        }
     }
     fclose(fp);
 
@@ -107,6 +116,11 @@ int main() {
     // Results printed to terminal
     printf("Total Processes Served: %d\n", served);
     printf("Total Processes Dropped: %d\n", dropped);
+
+    free(pid);
+    free(arrival_time);
+    free(burst_time);
+
 
     return 0;
 }
