@@ -59,7 +59,7 @@ int isQueueFull(struct Queue* q, int max_size) {
 
 int main() {
     FILE *fp;
-    fp = fopen("input2.txt", "r");
+    fp = fopen("input1.txt", "r");
     if (fp == NULL) {
         printf("Could not open file.\n");
         return 1;
@@ -117,6 +117,7 @@ int main() {
     printf("Total Processes Served: %d\n", served);
     printf("Total Processes Dropped: %d\n", dropped);
 
+    //freeing memory to prevent memory leaks
     free(pid);
     free(arrival_time);
     free(burst_time);

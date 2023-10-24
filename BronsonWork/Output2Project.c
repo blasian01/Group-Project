@@ -43,7 +43,6 @@ int main() {
     for (int i = 0; i < n; i++) {
         fscanf(fp, "P%d %d %d\n", &pid[i], &arrival_time[i], &burst_time[i]);
     }
-
     fclose(fp);
 
     // Initialize the first process's waiting and response time to 0
@@ -66,7 +65,7 @@ int main() {
         response_time[i] = waiting_time[i];
 
         // Calculate turnaround time for each process
-        turnaround_time[i] = waiting_time[i] + burst_time[i] + arrival_time[i];
+        turnaround_time[i] = waiting_time[i] + burst_time[i];
     }
 
     // Display the table
