@@ -4,9 +4,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void SJFAlgorithim(int n, Process processes[]){
+
+    int currentTime = 0;
+    int numCompleted = 0;
+
+    while (numCompleted < n) {
+        // Find the process with the shortest remaining time
+        int shortestIndex = -1;
+        for (int i = 0; i < n; i++) {
+            if (processes[i].arrivalTime <= current_time && processes[i].remainingTime > 0) {
+                if (shortestIndex == -1 || processes[i].remainingTime < processes[shortestIndex].remainingTime) {
+                    shortestIndex = i;
+                    if(processes[i].startTime == -1) { processes[i].startTime = currentTime; }
+                }
+            }
+        }
+
+        if (shortestIndex == -1) {
+            // No eligible process to run at the current time, just increment time
+            currentTime++;
+        } else {
+            // Execute the selected process for 1 time unit
+            processes[shortestIndex].remainingTime--;
+            currentTime++;
+
+            // If the process is completed, increment counter
+            if (processes[shortestIndex].remainingTime == 0) {
+                numCompleted++;
+                processes[i].endTime = currentTime;
+            }
+        }
+    }
+    
+}
+
 struct Process {
 
-int ID, arrivalTime, burstTime;
+int ID = -1;
+int arrivalTime = -1;
+int burstTime = -1; int remainingTime = -1;
+int startTime = -1; int endTime = -1;
 
 };
 
@@ -33,10 +71,20 @@ int main() {
     }
 
     for (int i = 0; i < n; i++) {
-        fscanf(fp, "P%d %d %d\n", &pid[i], &arrival_time[i], &burst_time[i]); //scan in information to arrays.
+        fscanf(fp, "P%d %d %d\n", &processID[i], &processArrivalTime[i], &processBurstTime[i]); //scan in information to arrays.
     }
 
     fclose(fp);
+
+    Process processes[n];
+    for(int i = 0; i < n; i++)
+        {
+            processes[i].ID = processID[i];
+            process[i].arrivalTime = processArrivalTime[i];
+            process[i].burstTime = processBurstTime[i];
+        }
+
+    SJFAlgorithim(n, &processes);
 
     //TODO Include 4 outputs here.
     // output1();
