@@ -1,5 +1,5 @@
-#infdef OUTPUT_1
-#define OUTPUT_1
+#ifndef _OUTPUT_1_
+#define _OUTPUT_1_
 
 void output1(int id);
 
