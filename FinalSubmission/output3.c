@@ -3,20 +3,11 @@
 #include <limits.h> // Include limits.h for INT_MAX
 #include "output3.h"
 
-// Define a struct to represent job descriptions
-struct jobDescription {
-    char jobID[3];       // Job identifier (e.g., "P1")
-    int timeArrival;     // Time at which the job arrives
-    int timeExecution;   // Time required for the job to execute
-};
 
-// Function to evaluate job information and calculate metrics
-void evaluateJobInfo(struct jobDescription jobs[], int jobCount);
-
-void output3() {
+void output3(char *argv) {
     FILE *fp;
 
-    fp = fopen("process_data.txt", "r");
+    fp = fopen(argv, "r");
 
     //char fn[] = "input.txt";     // Define the filename
     //FILE *inputFile = fopen(fn, "r");  // Open the file for reading
@@ -24,8 +15,7 @@ void output3() {
     // Check if the file can be opened
     if (fp == NULL) {
         printf("Error: Unable to open the file.\n");
-        return 1;  // Return an error code
-    }
+       }
 
     int jobCount;
     
@@ -46,7 +36,6 @@ void output3() {
     // Call a function to evaluate job information and calculate metrics
     evaluateJobInfo(jobs, jobCount);
 
-    return 0;
 }
 
 // Function to evaluate job information and calculate metrics

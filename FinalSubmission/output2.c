@@ -17,13 +17,12 @@ void displayTable(int n, int pid[], int arrival_time[], int burst_time[], int wa
     }
 }
 
-int output2() {
+void output2(char *argv) {
     FILE *fp;
 
-    fp = fopen("process_data.txt", "r");
+    fp = fopen(argv, "r");
     if (fp == NULL) {
         printf("Could not open file.\n");
-        return 1;
     }
 
     int n;
@@ -71,6 +70,4 @@ int output2() {
 
     // Display the table
     displayTable(n, pid, arrival_time, burst_time, waiting_time, turnaround_time, response_time);
-
-    return 0;
 }

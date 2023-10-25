@@ -53,10 +53,10 @@ void SJFAlgorithim(int n, struct Process processes[n]){
     
 }
 
-int main() {
+int main(int argc, char *argv[]) {
     FILE *fp;
 
-    fp = fopen("input1.txt", "r");
+    fp = fopen(argv[1], "r");
     if (fp == NULL) {
         printf("Error: Couldn't open file.\n");
         return 1;
@@ -90,15 +90,22 @@ int main() {
 	    processes[i].remainingTime = processBurstTime[i];	
         }
 
+
+	printf("Gantt Chart:\n");
     SJFAlgorithim(n, processes);
 
     //TODO Include 4 outputs here.
     //output 1 printing to console
 
     // output2 printing to the console 
-    // output2();
-    // output3();
-    // output4();
+	printf("|\n\nDisplay Table\n");
+    output2(argv[1]);
+printf("\n\nAverages:\n");
+
+    output3(argv[1]);
+printf("\n\nProcesses Dropped:\n");
+
+    output4(argv[1]);
 
     return 0;
 }
