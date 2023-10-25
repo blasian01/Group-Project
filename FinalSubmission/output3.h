@@ -11,5 +11,7 @@ struct jobDescription {
 // Function to evaluate job information and calculate metrics
 void evaluateJobInfo(struct jobDescription jobs[], int jobCount);
 
+void output3();
+
 
 #endif
