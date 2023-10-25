@@ -6,6 +6,7 @@
 and response time for each process using First-Come-First-Served scheduling, and then displays the results in a tabular format */
 
 #include <stdio.h>
+#include "output2.h"
 
 
 // Function to pring out the information of processes
@@ -16,7 +17,7 @@ void displayTable(int n, int pid[], int arrival_time[], int burst_time[], int wa
     }
 }
 
-int main() {
+int output2() {
     FILE *fp;
 
     fp = fopen("process_data.txt", "r");
