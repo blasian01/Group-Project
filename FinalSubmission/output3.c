@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h> // Include limits.h for INT_MAX
+#include "output3.h"
 
 // Define a struct to represent job descriptions
 struct jobDescription {
@@ -12,7 +13,7 @@ struct jobDescription {
 // Function to evaluate job information and calculate metrics
 void evaluateJobInfo(struct jobDescription jobs[], int jobCount);
 
-int main() {
+void output3() {
     FILE *fp;
 
     fp = fopen("process_data.txt", "r");
