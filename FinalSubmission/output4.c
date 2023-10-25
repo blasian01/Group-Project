@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "output4.h"
 
 // Struct for a queue node
 struct Node {
