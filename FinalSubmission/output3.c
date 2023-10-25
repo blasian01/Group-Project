@@ -1,3 +1,7 @@
+// Group Number: Group H
+// Author: Hruthika Reddy Nannuri
+// Email: hnannur@okstate.edu
+// Date: 10/25/2023
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h> // Include limits.h for INT_MAX
@@ -8,9 +12,6 @@ void output3(char *argv) {
     FILE *fp;
 
     fp = fopen(argv, "r");
-
-    //char fn[] = "input.txt";     // Define the filename
-    //FILE *inputFile = fopen(fn, "r");  // Open the file for reading
     
     // Check if the file can be opened
     if (fp == NULL) {
