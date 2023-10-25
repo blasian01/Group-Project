@@ -1,4 +1,7 @@
-//Author: Chris Settle
+// Group Number: Group H
+// Author: Chris Settle
+// Email: chris.settle@okstate.edu
+// Date: 10/25/2023
 //Reads input of file and prepares it to send to each indivdual c file for output.
 
 #include <stdio.h>
