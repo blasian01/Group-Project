@@ -94,7 +94,6 @@ int main() {
 
     //TODO Include 4 outputs here.
     //output 1 printing to console
-    output1();
 
     // output2 printing to the console 
     // output2();
