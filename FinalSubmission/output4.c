@@ -57,7 +57,7 @@ int isQueueFull(struct Queue* q, int max_size) {
     return q->size == max_size;
 }
 
-int main() {
+void output4() {
     FILE *fp;
     fp = fopen("input1.txt", "r");
     if (fp == NULL) {
@@ -122,6 +122,4 @@ int main() {
     free(arrival_time);
     free(burst_time);
 
-
-    return 0;
 }
