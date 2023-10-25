@@ -57,5 +57,7 @@ int isQueueFull(struct Queue* q, int max_size) {
     return q->size == max_size;
 }
 
+void output4();
+
 
 #endif
