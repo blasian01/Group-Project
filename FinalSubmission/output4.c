@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include "output4.h"
 
+//Author: Bronson Woods
+//Date: 10/17/23
+/* Program Description: This program reads process data from a text file, computes waiting time, turnaround time,
+ and response time for each process using First-Come-First-Served scheduling, and displays the results in a tabular format. 
+Through an intuitive queue management system, it handles arriving processes, serves them in order, and keeps track of served 
+and dropped processes, offering a clear insight into the algorithm's performance */
 
 // Function to create a new node
 struct Node* newNode(int pid) {
