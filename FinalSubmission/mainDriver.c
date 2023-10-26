@@ -1,4 +1,7 @@
-//Author: Chris Settle, Bronson Woods, Nannuri
+// Group Number: Group H
+// Author: Chris Settle
+// Email: chris.settle@okstate.edu
+// Date: 10/25/2023
 //Reads input of file and prepares it to send to each indivdual c file for output.
 
 #include <stdio.h>
@@ -8,7 +11,7 @@
 #include "output3.h"
 #include "output4.h"
 
-struct Process {
+struct Process { //Creates a struct for the information required of the Processes.
 
 int ID;
 int arrivalTime;
@@ -17,6 +20,8 @@ int startTime; int endTime;
 
 };
 
+//Takes an array of Procceses as input and then performs the pre-emptive shortest job first algorithim.
+//iterates and finds the shortest remaining time.
 void SJFAlgorithim(int n, struct Process processes[n]){
 
     int currentTime = 0;
@@ -41,7 +46,7 @@ void SJFAlgorithim(int n, struct Process processes[n]){
             // Execute the selected process for 1 time unit
             processes[shortestIndex].remainingTime--;
             currentTime++;
-            output1(processes[shortestIndex].ID);
+            output1(processes[shortestIndex].ID); //Outputs for Gantt chart
 
             // If the process is completed, increment counter
             if (processes[shortestIndex].remainingTime <= 0) {
@@ -53,10 +58,11 @@ void SJFAlgorithim(int n, struct Process processes[n]){
     
 }
 
+//Requires commandline argument for the input file.
 int main(int argc, char *argv[]) {
     FILE *fp;
 
-    fp = fopen(argv[1], "r");
+    fp = fopen(argv[1], "r"); //Opens the input file.
     if (fp == NULL) {
         printf("Error: Couldn't open file.\n");
         return 1;
@@ -82,7 +88,7 @@ int main(int argc, char *argv[]) {
     fclose(fp);
 
     struct Process processes[n];
-    for(int i = 0; i < n; i++)
+    for(int i = 0; i < n; i++) //Set process array values to the input values.
         {
             processes[i].ID = processID[i];
             processes[i].arrivalTime = processArrivalTime[i];
@@ -98,14 +104,14 @@ int main(int argc, char *argv[]) {
     //output 1 printing to console
 
     // output2 printing to the console 
-	printf("|\n\nDisplay Table\n");
+	printf("|\n\nDisplay Table\n"); //Displays a table of the different statisitcs of each process.
     output2(argv[1]);
 printf("\n\nAverages:\n");
 
-    output3(argv[1]);
+    output3(argv[1]); // Computes average of each statistic.
 printf("\n\nProcesses Dropped:\n");
 
-    output4(argv[1]);
+    output4(argv[1]); //Displays how many processes are dropped.
 
     return 0;
 }
